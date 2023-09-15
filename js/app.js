@@ -111,6 +111,15 @@ const displayNewsData = async (newsData) => {
 
 const showModal = async(id) =>{
     console.log(id);
+    const url = `https://openapi.programming-hero.com/api/news/${id}`;
+    try{
+        const res = await fetch(url);
+        const data = await res.json();
+        console.log(data.data);
+    }
+    catch(error){
+        console.log(error);
+    }
 }
 
 loadCategories();
