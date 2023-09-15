@@ -61,6 +61,8 @@ const displayNewsData = async (newsData) => {
         div.classList.add('card');
         div.style.marginBottom = '20px';
         div.style.marginTop = '20px';
+        let str = news.details;
+        console.log(str);
         div.innerHTML = `
             <div class="row g-0">
                       <div class="col-md-4">
@@ -69,7 +71,7 @@ const displayNewsData = async (newsData) => {
                       <div class="col-md-8">
                         <div class="card-body">
                           <h5 class="card-title">${news.title}</h5>
-                          <p class="card-text">${news.details}</p>
+                          <p class="card-text">${str.length > 20 ? str.substring(0, 200) + "..." : str}</p>
                           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                         </div>
                       </div>
