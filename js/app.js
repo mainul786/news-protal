@@ -61,25 +61,56 @@ const displayNewsData = async (newsData) => {
         div.classList.add('card');
         div.style.marginBottom = '20px';
         div.style.marginTop = '20px';
+        // div.style.maxWidth = '800px';
         let str = news.details;
-        console.log(str);
         div.innerHTML = `
-            <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="${news.image_url}" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">${news.title}</h5>
-                          <p class="card-text">${str.length > 20 ? str.substring(0, 200) + "..." : str}</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="${news.thumbnail_url}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">${news.title}</h5>
+              <p class="card-text">${str.length > 20 ? str.substring(0, 250) + '...' : str}</p>
+            </div>
+            <div class="container mt-4">
+            <div class="row row-cols-4">
+                <div class="col d-flex">
+                    <div> 
+                    <img src="${news.author.img}" class="rounded-circle w-50" alt="...">
                     </div>
+                    <div> 
+                        <p>${news.author.name ? news.author.name : 'no-name'}</p>
+                    </div>
+
+                </div>
+                <div class="col">
+                <i class="fa-regular fa-eye"></i>
+                <span>${news.rating.number}</span>
+                </div>
+                <div class="col">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                </div>
+                <div class="col">
+                    <span onclick="showModal('${news._id}')"><i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      
     `;
         cardContainer.appendChild(div);
 
     });
 };
+
+const showModal = async(id) =>{
+    console.log(id);
+}
 
 loadCategories();
