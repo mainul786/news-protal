@@ -31,6 +31,7 @@ const dispalyCategories = categories => {
         div.classList.add('col');
         div.style.fontSize = '14px';
         div.innerHTML = `
+        
         <span onclick="categoriesData('${category.category_id}')">${category.category_name}</span>
         `;
         categoriesContainer.appendChild(div);
