@@ -10,8 +10,20 @@ const loadCategories = async () => {
     }
 }
 
+// sppiner data loading
+const showSppiner = document.getElementById('showSppiner');
+// showSppiner.classList.remove('d-none');
+const loaddingDataShowSpiner = (isLoading) =>{
+    if(isLoading === true){
+        showSppiner.classList.remove('d-none');     
+    } else {
+        showSppiner.classList.add('d-none');
+    }
+}
+
 const dispalyCategories = categories => {
     // console.log(categories);
+    
     const categoriesContainer = document.getElementById('categories');
     categories.forEach(category => {
         // console.log(category);
@@ -26,6 +38,8 @@ const dispalyCategories = categories => {
 }
 
 const categoriesData = async (categoriesId) => {
+    const dataLength = categoriesId.lenght;
+    loaddingDataShowSpiner(true);
     // console.log(categoriesId);
     const url = `https://openapi.programming-hero.com/api/news/category/${categoriesId}`;
     try {
@@ -108,6 +122,7 @@ const displayNewsData = async (newsData) => {
       
     `;
         cardContainer.appendChild(div);
+    loaddingDataShowSpiner(false);
 
     });
 };
