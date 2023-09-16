@@ -12,8 +12,34 @@
 </head>
 
 <body>
-    <header>
-        <h3>Header section</h3>
+    <header class="container mb-4 ">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+            <div class="container-fluid ">
+                <a class="navbar-brand" href="#">BBC News</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pricing</a>
+                        </li>
+                    </ul>
+                    <span class="navbar-text">
+                        <div class="grid grid-col-2 gap-4">
+                            <a class="text-decoration-none ml-3" href="/blog.html">Blog</a>
+                            <a class="text-decoration-none" href="#">Home</a>
+                        </div>
+
+                    </span>
+                </div>
+            </div>
+        </nav>
     </header>
     <main>
         <section>
@@ -24,7 +50,7 @@
             </div>
         </section>
         <section class=" container ">
-            <div class="bg-light mt-4 fs-1 ">
+            <div class="bg-light mt-4 display-1 ">
                 <h6 class=" p-4" id="news-heading"></h6>
             </div>
             <div id="cardContainer">
@@ -36,14 +62,13 @@
             <section id="showSppiner" class="container text-center mt-4 d-none">
                 <div class="spinner-border text-success" role="status">
                     <span class="visually-hidden">Loading...</span>
-                  </div>
+                </div>
             </section>
             <!-- Button trigger modal -->
-          
+
 
             <!-- Modal -->
-            <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="showModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="showModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -51,7 +76,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body" id="modal-body">
-                            
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
