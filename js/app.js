@@ -49,14 +49,14 @@ const trancateText = (str, num) => {
 }
 
 const displayNewsData = async (newsData) => {
-    console.log(newsData);
+    // console.log(newsData);
     const newsHeading = document.getElementById('news-heading');
     newsHeading.innerText = `${newsData.length}  items found for category `;
     // console.log(newsData.length);
     const cardContainer = document.getElementById('cardContainer');
     cardContainer.innerHTML = '';
     newsData.forEach(news => {
-        console.log(news);
+        // console.log(news);
         const div = document.createElement('div');
         div.classList.add('card');
         div.style.marginBottom = '20px';
@@ -86,7 +86,7 @@ const displayNewsData = async (newsData) => {
                 </div>
                 <div class="col">
                 <i class="fa-regular fa-eye"></i>
-                <span>${news.rating.number}</span>
+                <span>${news.rating.number ? news.rating.number : 'no-view'}</span>
                 </div>
                 <div class="col">
                 <i class="fa-solid fa-star"></i>
@@ -96,7 +96,10 @@ const displayNewsData = async (newsData) => {
                 <i class="fa-regular fa-star"></i>
                 </div>
                 <div class="col">
-                    <span onclick="showModal('${news._id}')"><i class="fa-solid fa-arrow-right"></i></span>
+                    
+                    <button onclick="showModal('${news._id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showModal">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
                 </div>
             </div>
             </div>
@@ -115,11 +118,24 @@ const showModal = async(id) =>{
     try{
         const res = await fetch(url);
         const data = await res.json();
-        console.log(data.data);
+        displayModal(data.data[0]);
     }
     catch(error){
         console.log(error);
     }
+}
+
+const displayModal = async (modalInfo) =>{
+console.log(modalInfo);
+const showModal = document.getElementById('showModalLabel');
+showModal.innerText = modalInfo.title;
+const modalBody = document.getElementById('modal-body');
+modalBody.innerHTML = `
+<p>Name: ${modalInfo.author ? modalInfo.author.name : 'no-name'}</p>
+<p>Badget:  ${modalInfo.rating.badge}</p>
+<p>Total View: ${modalInfo.total_view ? modalInfo.total_view : 'no-view'}</p>
+`;
+
 }
 
 loadCategories();
