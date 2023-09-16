@@ -13,9 +13,9 @@ const loadCategories = async () => {
 // sppiner data loading
 const showSppiner = document.getElementById('showSppiner');
 // showSppiner.classList.remove('d-none');
-const loaddingDataShowSpiner = (isLoading) =>{
-    if(isLoading === true){
-        showSppiner.classList.remove('d-none');     
+const loaddingDataShowSpiner = (isLoading) => {
+    if (isLoading === true) {
+        showSppiner.classList.remove('d-none');
     } else {
         showSppiner.classList.add('d-none');
     }
@@ -23,7 +23,7 @@ const loaddingDataShowSpiner = (isLoading) =>{
 
 const dispalyCategories = categories => {
     // console.log(categories);
-    
+
     const categoriesContainer = document.getElementById('categories');
     categories.forEach(category => {
         // console.log(category);
@@ -39,7 +39,7 @@ const dispalyCategories = categories => {
 }
 
 const categoriesData = async (categoriesId) => {
-    const dataLength = categoriesId.lenght;
+
     loaddingDataShowSpiner(true);
     // console.log(categoriesId);
     const url = `https://openapi.programming-hero.com/api/news/category/${categoriesId}`;
@@ -123,30 +123,30 @@ const displayNewsData = async (newsData) => {
       
     `;
         cardContainer.appendChild(div);
-    loaddingDataShowSpiner(false);
+        loaddingDataShowSpiner(false);
 
     });
 };
 
-const showModal = async(id) =>{
+const showModal = async (id) => {
     console.log(id);
     const url = `https://openapi.programming-hero.com/api/news/${id}`;
-    try{
+    try {
         const res = await fetch(url);
         const data = await res.json();
         displayModal(data.data[0]);
     }
-    catch(error){
+    catch (error) {
         console.log(error);
     }
 }
 
-const displayModal = async (modalInfo) =>{
-console.log(modalInfo);
-const showModal = document.getElementById('showModalLabel');
-showModal.innerText = modalInfo.title;
-const modalBody = document.getElementById('modal-body');
-modalBody.innerHTML = `
+const displayModal = async (modalInfo) => {
+    console.log(modalInfo);
+    const showModal = document.getElementById('showModalLabel');
+    showModal.innerText = modalInfo.title;
+    const modalBody = document.getElementById('modal-body');
+    modalBody.innerHTML = `
 <p>Name: ${modalInfo.author ? modalInfo.author.name : 'no-name'}</p>
 <p>Badget:  ${modalInfo.rating.badge}</p>
 <p>Total View: ${modalInfo.total_view ? modalInfo.total_view : 'no-view'}</p>
